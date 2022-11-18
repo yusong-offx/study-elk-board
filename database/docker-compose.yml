@@ -1,0 +1,26 @@
+version: "3.9"
+
+networks:
+  default:
+    name: myapp-net
+    external: true
+
+services:
+  pgadmin4:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - 5000:80
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=hssong1024@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=postgres
+
+  postgres:
+    image: postgres:alpine
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=myapp
+      - POSTGRES_DB=myapp
+
